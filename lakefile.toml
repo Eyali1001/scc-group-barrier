@@ -1,0 +1,12 @@
+name = "scc_thm8"
+version = "0.1.0"
+defaultTargets = ["SCCThm8Lib"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"
+
+[[lean_lib]]
+name = "SCCThm8Lib"
+roots = ["Challenge", "Solution", "SCCThm8.Defs", "SCCThm8.Rigidity", "SCCThm8.Counting", "SCCThm8.Numeric", "SCCThm8.Degeneration"]

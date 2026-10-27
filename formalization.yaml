@@ -1,0 +1,49 @@
+version: v0.4
+project:
+  name: "Group constructions cannot refute the Set Cover Conjecture"
+  description: >-
+    Pratt (STOC 2024, arXiv:2311.02774, Corollary 1.12) showed that if the Set Cover Conjecture holds,
+    then for every k the asymptotic rank of the balanced tripartitioning tensor T_k is at least
+    tau_k = 8^k * C(3k,k) * C(2k,k) / 27^k. A natural way to bound this rank, and Pratt's own route to
+    rank at most 8^k/2, is a group construction: maps f1, f2, f3 from k-subsets of a 3k-set to a group G
+    with f1(A) f2(B) f3(C) = 1 exactly when A, B, C are pairwise disjoint (a partition analogue of the
+    Cohn-Umans triple product property). We formalise that no such construction, in any finite group,
+    abelian or not, can refute the conjecture: |G| > tau_k for every k >= 2. The same holds for Strassen
+    combinatorial degenerations of group tensors (border-rank constructions), via |G| >= C(3k, floor(3k/2)) > tau_k. The proof formalises a
+    rigidity theorem: the triple products always factor through pairwise commuting elements,
+    f1(A) f2(B) f3(C) = prod_i g_i^(m_i - 1) with m the multiplicity vector, so non-abelian groups give no
+    advantage, unlike in the Cohn-Umans approach to matrix multiplication. It also formalises a lift
+    lemma giving |G| >= 2^(3k-1), which shows Pratt's 8^k/2 is exactly optimal among group
+    restrictions. Pratt's Corollary 1.12 and the passage from a group embedding to a rank bound are
+    cited, not formalised.
+  authors: ["Eyal Merhavi"]
+  responsible_maintainers: ["Eyal Merhavi"]
+  license: Apache-2.0
+classification:
+  arxiv: [cs.CC, math.CO, math.GR]
+  msc2020: [68Q17, 15A69, 20D60]
+automation:
+  methods:
+    - method: agent
+      notes: >-
+        The theorems, the informal proofs and the Lean proofs were produced by AI coding agents
+        (Anthropic Claude) working under the direction of the human author, who chose the problem, steered the research
+        and takes responsibility for the submission. The informal proofs were cross-checked by
+        independent agent runs and by computation (exhaustive SAT searches over all groups of order
+        at most 31 for k = 2). No independent human mathematical review was performed.
+review:
+  status: unchecked
+  notes: "No independent human review."
+sources:
+  - title: "This work: rigidity of partition products and a lift lemma (informal proofs by the authors)"
+    type: original-proof
+    relationship: other
+  - title: "K. Pratt, A stronger connection between the asymptotic rank conjecture and the set cover conjecture, STOC 2024, arXiv:2311.02774"
+    type: paper
+    relationship: background
+  - title: "A. Bjorklund, P. Kaski, The asymptotic rank conjecture and the set cover conjecture are not both true, STOC 2024, arXiv:2310.11926"
+    type: paper
+    relationship: background
+  - title: "H. Cohn, C. Umans, A group-theoretic approach to fast matrix multiplication, FOCS 2003"
+    type: paper
+    relationship: background
