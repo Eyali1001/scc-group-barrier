@@ -1,6 +1,16 @@
-# Single-copy group constructions cannot refute the Set Cover Conjecture (Lean)
+# Group constructions cannot refute the Set Cover Conjecture, including tensor powers (Lean)
 
 ## Headline
+
+**`group_constructions_cannot_refute_SCC`** (asymptotic version, covering tensor powers). Let `G` be any finite group,
+abelian or not, and let `k ≥ 2` and `m ≥ 1`. Take a Strassen combinatorial degeneration of the group tensor of `G`
+onto the tensor power `T_k^{⊗m}`, indexed by `m`-tuples of `k`-sets. Restrictions are the case of zero weights.
+Then `|G| > τ_k^m`. The proof goes through `|G| ≥ C(3k,⌊3k/2⌋)^m`.
+
+Such a construction bounds the asymptotic rank of `T_k` by `|G|^{1/m}`, which is still above `τ_k`. So **no group
+construction, for a single copy or joint over many copies, can refute SCC.**
+
+**Single-copy statements (the case `m = 1`):**
 
 **`group_degeneration_exceeds_SCC_threshold`** (border-rank version). Let `G` be any finite group,
 abelian or not, and let `k ≥ 2`. Take a Strassen combinatorial degeneration of the group tensor of
@@ -48,13 +58,12 @@ By the theorem, every such bound exceeds `τ_k`. Pratt's group method uses `G = 
 * **What is bounded.** The theorems bound the *size of the group* a construction needs. They also bound the
   rank bounds such constructions inherit from their ambient group tensors. They are **not** lower bounds on the
   rank or border rank of `T_k` itself. Arbitrary linear maps and other non-group constructions are untouched.
-* **Single copy only.** Only constructions for one copy of `T_k` are covered.
-  * A refutation of SCC needs an *asymptotic*-rank bound, so it could also come from a joint group
-    construction for `T_k^{⊗m}` that beats `|G|^{1/m}`.
-  * Closing that case needs a tensor-power version of these theorems: block-wise rigidity, with per-copy
-    bound `C(3k,⌊3k/2⌋)`.
-  * We have a proof sketch of that version, but it is **not** written up or formalised here.
-  * The headline is therefore "no single-copy group construction can refute SCC".
+* **Tensor powers are covered.** `group_constructions_cannot_refute_SCC` handles joint constructions for every
+  `T_k^{⊗m}`, using block-wise rigidity in `SCCThm8/PowerRigidity.lean` and the bound `C(3k,⌊3k/2⌋)^m` in
+  `SCCThm8/PowerDegeneration.lean`.
+  * The `2^{3k−1}` restriction bound is single-copy only. Its lift lemma does not extend block by block, because a
+    difference vector can lie in `E` in one block and in `−E` in another.
+  * The `C(3k,⌊3k/2⌋)^m` bound suffices, since `C(3k,⌊3k/2⌋) > τ_k`.
 * **What the theorem does not say.** It does **not** say SCC is true.
 * **Novelty:**
   * A literature search found the `ℤ₂`-only special case of the counting bound in a public dataset.

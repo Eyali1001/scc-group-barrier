@@ -18,4 +18,12 @@ def mult {n : ℕ} (A B C : Finset (Fin n)) (i : Fin n) : ℤ :=
 def psi {G : Type*} [Group G] {n : ℕ} (g : Fin n → G) (e : Fin n → ℤ) : G :=
   ((List.finRange n).map fun i => g i ^ e i).prod
 
+/-- Multiplicity of the point `i` of block `j` in a triple of block-tuples. -/
+def multP {m n : ℕ} (A B C : Fin m → Finset (Fin n)) (j : Fin m) (i : Fin n) : ℤ :=
+  mult (A j) (B j) (C j) i
+
+/-- `psiP g e = ∏_j ∏_i (g j i)^(e j i)`, taken in the order of the blocks `j` and then of `i`. -/
+def psiP {G : Type*} [Group G] {m n : ℕ} (g : Fin m → Fin n → G) (e : Fin m → Fin n → ℤ) : G :=
+  ((List.finRange m).map fun j => psi (g j) (e j)).prod
+
 end SCCThm8

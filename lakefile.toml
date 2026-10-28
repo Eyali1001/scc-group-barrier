@@ -9,4 +9,4 @@ rev = "v4.35.0"
 
 [[lean_lib]]
 name = "SCCThm8Lib"
-roots = ["Challenge", "Solution", "SCCThm8.Defs", "SCCThm8.Rigidity", "SCCThm8.Counting", "SCCThm8.Numeric", "SCCThm8.Degeneration"]
+roots = ["Challenge", "Solution", "SCCThm8.Defs", "SCCThm8.Rigidity", "SCCThm8.Counting", "SCCThm8.Numeric", "SCCThm8.Degeneration", "SCCThm8.PowerRigidity", "SCCThm8.PowerDegeneration"]

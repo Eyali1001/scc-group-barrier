@@ -45,8 +45,9 @@ group embedding to a rank bound, are cited, not formalised.
 
 **Scope.** These are lower bounds on the size of the group a construction needs. They are not lower
 bounds on the rank or border rank of `T_k`, which arbitrary (non-monomial) linear maps may still
-lower. Only constructions for a single copy of `T_k` are covered. Joint group constructions for the
-tensor powers `T_k^{⊗m}`, which govern asymptotic rank, are **not** covered.
+lower. `group_constructions_cannot_refute_SCC` covers joint constructions for every tensor power
+`T_k^{⊗m}`, which govern asymptotic rank. The other theorems are the single-copy (`m = 1`)
+statements.
 -/
 
 @[expose] public section
@@ -107,5 +108,31 @@ theorem group_degeneration_exceeds_SCC_threshold {G : Type*} [Group G] [Fintype 
       ¬ (Disjoint A B ∧ Disjoint A C ∧ Disjoint B C) →
         f₁ A * f₂ B * f₃ C = 1 → 0 < a A + b B + c C) :
     (8 ^ k * (Nat.choose (3 * k) k) * (Nat.choose (2 * k) k) : ℚ) / 27 ^ k <
+      Fintype.card G := by
+  sorry
+
+/-- **Group constructions cannot refute the Set Cover Conjecture, including tensor powers
+(headline).** Let `G` be any finite group, `k ≥ 2` and `m ≥ 1`. Index the tensor power
+`T_k^{⊗m}` by `m`-tuples of `k`-subsets of `Fin (3k)`. Take a monomial (Strassen combinatorial)
+degeneration of the group tensor of `G` onto `T_k^{⊗m}`. It consists of maps `f₁, f₂, f₃` into `G`
+and integer weights `a, b, c` such that:
+* every triple that is pairwise disjoint in every block has product `1` and weight `0`;
+* every other triple with product `1` has positive weight.
+Restrictions are the case `a = b = c = 0`.
+Then `|G| > τ_k^m`, where `τ_k = 8^k·C(3k,k)·C(2k,k)/27^k` is Pratt's threshold. Such a
+construction bounds the asymptotic rank of `T_k` by `|G|^{1/m}`, which is above `τ_k`, so it
+cannot refute SCC. -/
+theorem group_constructions_cannot_refute_SCC {G : Type*} [Group G] [Fintype G]
+    (k m : ℕ) (hk : 2 ≤ k) (hm : 1 ≤ m)
+    (f₁ f₂ f₃ : (Fin m → Finset (Fin (3 * k))) → G) (a b c : (Fin m → Finset (Fin (3 * k))) → ℤ)
+    (hpart : ∀ A B C : Fin m → Finset (Fin (3 * k)),
+      (∀ j, (A j).card = k) → (∀ j, (B j).card = k) → (∀ j, (C j).card = k) →
+      (∀ j, Disjoint (A j) (B j) ∧ Disjoint (A j) (C j) ∧ Disjoint (B j) (C j)) →
+        f₁ A * f₂ B * f₃ C = 1 ∧ a A + b B + c C = 0)
+    (hnon : ∀ A B C : Fin m → Finset (Fin (3 * k)),
+      (∀ j, (A j).card = k) → (∀ j, (B j).card = k) → (∀ j, (C j).card = k) →
+      ¬ (∀ j, Disjoint (A j) (B j) ∧ Disjoint (A j) (C j) ∧ Disjoint (B j) (C j)) →
+        f₁ A * f₂ B * f₃ C = 1 → 0 < a A + b B + c C) :
+    ((8 ^ k * (Nat.choose (3 * k) k) * (Nat.choose (2 * k) k) : ℚ) / 27 ^ k) ^ m <
       Fintype.card G := by
   sorry

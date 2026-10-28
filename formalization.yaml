@@ -1,6 +1,6 @@
 version: v0.4
 project:
-  name: "Single-copy group constructions cannot refute the Set Cover Conjecture"
+  name: "Group constructions cannot refute the Set Cover Conjecture, including tensor powers"
   description: >-
     Pratt (STOC 2024, arXiv:2311.02774, Corollary 1.12) showed that if the Set Cover Conjecture holds,
     then for every k the asymptotic rank of the balanced tripartitioning tensor T_k is at least
@@ -16,8 +16,9 @@ project:
     lemma giving |G| >= 2^(3k-1), which shows Pratt's 8^k/2 is exactly optimal among group
     restrictions. Pratt's Corollary 1.12 and the passage from a group embedding to a rank bound are
     cited, not formalised. The bounds concern the group size needed by such constructions, not the rank
-    of T_k itself, and only constructions for a single copy of T_k; joint constructions for tensor powers,
-    which govern asymptotic rank, are not covered.
+    of T_k itself. Joint constructions for tensor powers are covered: a degeneration of a group tensor onto
+    T_k^(tensor m) needs |G| >= C(3k, floor(3k/2))^m > tau_k^m, so the induced asymptotic-rank bound
+    |G|^(1/m) stays above tau_k.
   authors: ["Eyal Merhavi"]
   responsible_maintainers: ["Eyal Merhavi"]
   license: Apache-2.0
