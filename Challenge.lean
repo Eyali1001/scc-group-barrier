@@ -41,8 +41,12 @@ The proof goes through two further compared theorems:
   restrictions.
 
 **Not formalised.** Pratt's Corollary 1.12 (SCC ⟹ `R̃(T_k) ≥ τ_k`), and the standard step from a
-group embedding to a rank bound, are cited, not formalised. Tensor powers `T_k^{⊗m}` (the per-copy
-analogue) are proved on paper but not formalised here.
+group embedding to a rank bound, are cited, not formalised.
+
+**Scope.** These are lower bounds on the size of the group a construction needs. They are not lower
+bounds on the rank or border rank of `T_k`, which arbitrary (non-monomial) linear maps may still
+lower. Only constructions for a single copy of `T_k` are covered. Joint group constructions for the
+tensor powers `T_k^{⊗m}`, which govern asymptotic rank, are **not** covered.
 -/
 
 @[expose] public section

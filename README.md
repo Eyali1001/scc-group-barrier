@@ -1,4 +1,4 @@
-# Group constructions cannot refute the Set Cover Conjecture (Lean)
+# Single-copy group constructions cannot refute the Set Cover Conjecture (Lean)
 
 ## Headline
 
@@ -45,11 +45,17 @@ By the theorem, every such bound exceeds `τ_k`. Pratt's group method uses `G = 
 * **Not formalised:**
   * Pratt's Corollary 1.12.
   * The standard step from a group embedding to a rank bound.
-* **Proved on paper, outside this formalisation:**
-  * The tensor-power analogue (constructions for `T_k^{⊗m}`).
-* **What the theorem does not say:**
-  * It does **not** say SCC is true.
-  * It does not rule out non-group (non-monomial) constructions.
+* **What is bounded.** The theorems bound the *size of the group* a construction needs. They also bound the
+  rank bounds such constructions inherit from their ambient group tensors. They are **not** lower bounds on the
+  rank or border rank of `T_k` itself. Arbitrary linear maps and other non-group constructions are untouched.
+* **Single copy only.** Only constructions for one copy of `T_k` are covered.
+  * A refutation of SCC needs an *asymptotic*-rank bound, so it could also come from a joint group
+    construction for `T_k^{⊗m}` that beats `|G|^{1/m}`.
+  * Closing that case needs a tensor-power version of these theorems: block-wise rigidity, with per-copy
+    bound `C(3k,⌊3k/2⌋)`.
+  * We have a proof sketch of that version, but it is **not** written up or formalised here.
+  * The headline is therefore "no single-copy group construction can refute SCC".
+* **What the theorem does not say.** It does **not** say SCC is true.
 * **Novelty:**
   * A literature search found the `ℤ₂`-only special case of the counting bound in a public dataset.
   * We found no statement of the rigidity theorem for general groups. The search was not exhaustive.

@@ -1,6 +1,6 @@
 version: v0.4
 project:
-  name: "Group constructions cannot refute the Set Cover Conjecture"
+  name: "Single-copy group constructions cannot refute the Set Cover Conjecture"
   description: >-
     Pratt (STOC 2024, arXiv:2311.02774, Corollary 1.12) showed that if the Set Cover Conjecture holds,
     then for every k the asymptotic rank of the balanced tripartitioning tensor T_k is at least
@@ -15,7 +15,9 @@ project:
     advantage, unlike in the Cohn-Umans approach to matrix multiplication. It also formalises a lift
     lemma giving |G| >= 2^(3k-1), which shows Pratt's 8^k/2 is exactly optimal among group
     restrictions. Pratt's Corollary 1.12 and the passage from a group embedding to a rank bound are
-    cited, not formalised.
+    cited, not formalised. The bounds concern the group size needed by such constructions, not the rank
+    of T_k itself, and only constructions for a single copy of T_k; joint constructions for tensor powers,
+    which govern asymptotic rank, are not covered.
   authors: ["Eyal Merhavi"]
   responsible_maintainers: ["Eyal Merhavi"]
   license: Apache-2.0
@@ -35,7 +37,7 @@ review:
   status: unchecked
   notes: "No independent human review."
 sources:
-  - title: "This work: rigidity of partition products and a lift lemma (informal proofs by the authors)"
+  - title: "This work: rigidity of partition products, a lift lemma and a degeneration bound. The informal proofs and the Lean proofs were produced by AI agents (Anthropic Claude). Eyal Merhavi chose the problem, directed the work and is responsible for the submission."
     type: original-proof
     relationship: other
   - title: "K. Pratt, A stronger connection between the asymptotic rank conjecture and the set cover conjecture, STOC 2024, arXiv:2311.02774"
